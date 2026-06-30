@@ -1,21 +1,38 @@
-# dedicated-server-criminal-spree
+# 🎮 Dedicated Server Criminal Spree 🚔
 
-https://www.youtube.com/watch?v=RgmtdeBIZ2s
+[![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/compose/)
+[![Memory Consumption](https://img.shields.io/badge/RAM_Estimate-~13_GB-FF6B6B?style=for-the-badge&logo=ram&logoColor=white)]()
 
-Want to go to jail? Just docker compose up -d
+> *"Want to go to jail? Just `docker compose up -d`"*
 
-Estimate memory consumption: 13gb
-I didn't bother testing if it actually works, but at least the images are downloaded and most containers seem to start so... I'll leave the rest of the tinkering to you.
+📺 **Context:** [Minecraft private servers are illegal, according to the ESA.](https://www.youtube.com/watch?v=RgmtdeBIZ2s)
 
-# Quick Reference
-Start everything:
-  docker compose up -d
+---
+## ⚡ Disclaimer & Status
+* **Status:** *Untested Chaos.* The images download successfully and most containers spin up, but the rest of the tinkering, and performance is left to you. Good luck, criminal.
+---
+
+## 🚀 Quick Reference Guide
+
+### 🟢 Start the Syndicate
+Spin up all game servers in detached mode (background):
+```bash
+docker compose up -d
+```
 
 Stop everything:
-  docker compose down
+```bash
+docker compose down
+```
 
-Stop and delete everything (volumes):
-  docker compose down -v
+Stop and delete everything:
+```bash
+docker compose down -v
+```
 
-View logs:
-  docker compose logs -f [service-name]
+Logs (you'll need it more than I do):
+```bash
+docker compose logs -f [service-name]
+```
+
+Bye.
