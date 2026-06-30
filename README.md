@@ -8,8 +8,25 @@
 📺 **Context:** [Minecraft private servers are illegal, according to the ESA.](https://www.youtube.com/watch?v=RgmtdeBIZ2s)
 
 ---
+## Dedicated Server to:
+- Minecraft
+- Counter-Strike 2
+- Rust
+- Valheim
+- Team Fortress 2
+- Garry's Mod
+- Palworld
+- Factorio
+- Satisfactory
+- Path of Titans
+- Enshrouded
+- Terraria
+- 7 Days to Die
+---
+
+---
 ## ⚡ Disclaimer & Status
-* **Status:** *Untested Chaos.* The images download successfully and most containers spin up, but the rest of the tinkering is left to you. Good luck, criminal.
+* **Status:** The images download successfully and most containers spin up, but the rest of the tinkering is left to you. Good luck, criminal.
 ---
 
 ## 🚀 Quick Reference Guide
