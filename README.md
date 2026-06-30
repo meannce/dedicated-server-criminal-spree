@@ -8,7 +8,7 @@
 📺 **Context:** [Minecraft private servers are illegal, according to the ESA.](https://www.youtube.com/watch?v=RgmtdeBIZ2s)
 
 ---
-## Dedicated Server to:
+## Dedicated Servers:
 - Minecraft
 - Counter-Strike 2
 - Rust
@@ -22,7 +22,6 @@
 - Enshrouded
 - Terraria
 - 7 Days to Die
----
 
 ---
 ## ⚡ Disclaimer & Status
