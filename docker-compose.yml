@@ -1,0 +1,242 @@
+services:
+  # ==================== MINECRAFT ====================
+  minecraft-survival:
+    image: itzg/minecraft-server
+    container_name: minecraft-survival
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      MEMORY: "2G"
+      VERSION: "latest"
+      MOTD: "Survival Server #1"
+    volumes:
+      - minecraft_survival:/data
+    restart: unless-stopped
+
+  minecraft-creative:
+    image: itzg/minecraft-server
+    container_name: minecraft-creative
+    ports:
+      - "25566:25565"
+    environment:
+      EULA: "TRUE"
+      MEMORY: "2G"
+      GAMEMODE: "creative"
+      MOTD: "Creative Server #1"
+    volumes:
+      - minecraft_creative:/data
+    restart: unless-stopped
+
+  minecraft-hardcore:
+    image: itzg/minecraft-server
+    container_name: minecraft-hardcore
+    ports:
+      - "25567:25565"
+    environment:
+      EULA: "TRUE"
+      MEMORY: "2G"
+      DIFFICULTY: "hard"
+      MOTD: "Hardcore Nope Zone"
+    volumes:
+      - minecraft_hardcore:/data
+    restart: unless-stopped
+
+  # ==================== COUNTER-STRIKE 2 ====================
+  cs2-competitive:
+    image: joedwards32/cs2:latest
+    container_name: cs2-competitive
+    ports:
+      - "27015:27015/udp"
+      - "27015:27015/tcp"
+    environment:
+      CSGO_HOSTNAME: "CS2 Competitive Server"
+      CSGO_PASSWORD: "changeme123"
+      GAME_TYPE: "0"
+      GAME_MODE: "1"
+    volumes:
+      - cs2_competitive:/home/steam/cs2-dedicated
+    restart: unless-stopped
+
+  cs2-deathmatch:
+    image: joedwards32/cs2:latest
+    container_name: cs2-deathmatch
+    ports:
+      - "27016:27015/udp"
+      - "27016:27015/tcp"
+    environment:
+      CSGO_HOSTNAME: "CS2 Deathmatch Server"
+      CSGO_PASSWORD: "changeme123"
+      GAME_TYPE: "1"
+      GAME_MODE: "2"
+    volumes:
+      - cs2_deathmatch:/home/steam/cs2-dedicated
+    restart: unless-stopped
+
+  # ==================== RUST ====================
+  rust-server:
+    image: didstopia/rust-server:latest
+    container_name: rust-server
+    ports:
+      - "28015:28015"
+      - "28016:28016"
+    environment:
+      RUST_SERVER_NAME: "Chaotic Rust Server"
+      RUST_SERVER_DESCRIPTION: "Do not expect to keep your loot"
+      RUST_SERVER_URL: "http://your-website.com"
+      RUST_SERVER_BANNER_URL: "http://your-website.com/banner.png"
+      RUST_SERVER_SEED: "12345"
+      RUST_SERVER_WORLDSIZE: "2500"
+      RUST_SERVER_MAXPLAYERS: "100"
+      RUST_RCON_PASSWORD: "rconpassword123"
+    volumes:
+      - rust_server:/home/rust/server
+    restart: unless-stopped
+
+  # ==================== VALHEIM ====================
+  valheim-server:
+    image: lloesche/valheim:latest
+    container_name: valheim-server
+    ports:
+      - "2456:2456/udp"
+      - "2457:2457/udp"
+      - "2458:2458/udp"
+    environment:
+      SERVER_NAME: "Valheim World of Chaos"
+      WORLD_NAME: "Dedicated"
+      SERVER_PASS: "youshalnotpass"
+      BACKUPS: "true"
+      BACKUPS_INTERVAL: "720"
+    volumes:
+      - valheim_config:/home/steam/.config/unity3d/IronGate/Valheim
+      - valheim_data:/home/steam/.local/share/Steam/steamapps/compatdata
+    restart: unless-stopped
+
+  # ==================== TEAM FORTRESS 2 ====================
+  tf2-server:
+    image: jamiedoesquestion/sourcemod-tf2:latest
+    container_name: tf2-server
+    ports:
+      - "27017:27015/udp"
+      - "27017:27015/tcp"
+    environment:
+      SRCDS_HOSTNAME: "Team Fortress 2 Server"
+      SRCDS_PASSWORD: "tf2pass"
+      SRCDS_RCON: "rconpass123"
+      SRCDS_PORT: "27015"
+    volumes:
+      - tf2_server:/home/steam/tf2_server
+    restart: unless-stopped
+
+  # ==================== LEFT 4 DEAD 2 ====================
+  l4d2-server:
+    image: cm2network/l4d2:latest
+    container_name: l4d2-server
+    ports:
+      - "27018:27015/udp"
+      - "27018:27015/tcp"
+      - "27020:27020/udp"
+    environment:
+      SRCDS_HOSTNAME: "Left 4 Dead 2 - Zombie Simulator"
+      SRCDS_PASSWORD: "l4d2pass"
+      SRCDS_RCON: "rconpass123"
+    volumes:
+      - l4d2_server:/home/steam/l4d2-server
+    restart: unless-stopped
+
+  # ==================== ARK SURVIVAL EVOLVED ====================
+  ark-server:
+    image: tusey/ark:latest
+    container_name: ark-server
+    ports:
+      - "7777:7777/udp"
+      - "7778:7778/udp"
+      - "27015:27015"
+    environment:
+      SERVER_MAP: "TheIsland"
+      SERVER_PASSWORD: "dinosaurs123"
+      SERVER_ADMIN_PASSWORD: "adminpass123"
+      RCON_PORT: "27015"
+    volumes:
+      - ark_server:/ark
+    restart: unless-stopped
+
+  # ==================== GARRY'S MOD ====================
+  gmod-server:
+    image: cm2network/garrysmod:latest
+    container_name: gmod-server
+    ports:
+      - "27019:27015/udp"
+      - "27019:27015/tcp"
+    environment:
+      SRCDS_HOSTNAME: "Garry's Mod Sandbox"
+      SRCDS_PASSWORD: "gmodpass"
+      SRCDS_RCON: "gmodrcon123"
+    volumes:
+      - gmod_server:/home/steam/gmod-server
+    restart: unless-stopped
+
+  # ==================== PALWORLD ====================
+  palworld-server:
+    image: thijsvanloef/palworld-server-docker:latest
+    container_name: palworld-server
+    ports:
+      - "8211:8211/udp"
+      - "27015:27015/tcp"
+    environment:
+      PLAYERS: "32"
+      PORT: "8211"
+      PALWORLD_SOCKETSUBSYSTEM_THREADPOOLSIZE: "4"
+      COMMUNITY_SERVER: "0"
+      SERVER_PASSWORD: "palpass123"
+      ADMIN_PASSWORD: "paladmin123"
+    volumes:
+      - palworld_server:/palworld
+    restart: unless-stopped
+
+  # ==================== FACTORIO ====================
+  factorio-server:
+    image: factoriotools/factorio:latest
+    container_name: factorio-server
+    ports:
+      - "34197:34197/udp"
+    environment:
+      GENERATE_NEW_SAVE: "true"
+      SAVE_NAME: "Chaos-Factory"
+    volumes:
+      - factorio_config:/factorio/config
+      - factorio_saves:/factorio/saves
+    restart: unless-stopped
+
+  # ==================== SATISFACTORY ====================
+  satisfactory-server:
+    image: wolveix/satisfactory-server:latest
+    container_name: satisfactory-server
+    ports:
+      - "7777:7777/udp"
+      - "7778:7778/udp"
+    environment:
+      MAXPLAYERS: "4"
+      PGID: "1000"
+      PUID: "1000"
+    volumes:
+      - satisfactory_server:/config
+    restart: unless-stopped
+
+volumes:
+  minecraft_survival:
+  minecraft_creative:
+  minecraft_hardcore:
+  cs2_competitive:
+  cs2_deathmatch:
+  rust_server:
+  valheim_config:
+  valheim_data:
+  tf2_server:
+  l4d2_server:
+  ark_server:
+  gmod_server:
+  palworld_server:
+  factorio_config:
+  factorio_saves:
+  satisfactory_server:
