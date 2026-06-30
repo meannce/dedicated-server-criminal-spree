@@ -9,12 +9,12 @@
 
 ---
 ## ⚡ Disclaimer & Status
-* **Status:** *Untested Chaos.* The images download successfully and most containers spin up, but the rest of the tinkering, and performance is left to you. Good luck, criminal.
+* **Status:** *Untested Chaos.* The images download successfully and most containers spin up, but the rest of the tinkering is left to you. Good luck, criminal.
 ---
 
 ## 🚀 Quick Reference Guide
 
-### 🟢 Start the Syndicate
+### Start the Syndicate
 Spin up all game servers in detached mode (background):
 ```bash
 docker compose up -d
